@@ -5,12 +5,11 @@ namespace Secretary.UnitTests
     public class SchoolTests
     {
         [Fact]
-        public void TrainFor_GivenAValidPath_ShouldReturnASecretaryTrainedToManageThatFolder()
-        {
-            ISecretary secretary = new Secretary();
+        public void GetTrainedSecretary_UsingASchool_ShouldReturnASecretaryTrainedToManageThatFolder()
+        {            
             var school = new School(@"C:\");
 
-            school.Train(ref secretary);
+            var secretary = school.GetTrainedSecretary();
 
             Assert.Equal(@"C:\", secretary.FolderManaging);
         }

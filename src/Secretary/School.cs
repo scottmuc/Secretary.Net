@@ -9,9 +9,9 @@ namespace Secretary
             this.schoolSpecializedFolder = schoolSpecializedFolder;
         }
 
-        public void Train(ref ISecretary secretary)
+        public ISecretary GetTrainedSecretary()
         {
-            secretary.FolderManaging = schoolSpecializedFolder;
+            return new Secretary(schoolSpecializedFolder);
         }
     }
 }

@@ -13,5 +13,15 @@ namespace Secretary.UnitTests
 
             Assert.Equal(tempPath, secretary.FolderManaging);
         }
+
+        [Fact]
+        public void GetFile_GivenAFileName_ShouldReturnAFile()
+        {
+            var secretary = new Secretary(tempPath);
+
+            var result = secretary.GetFile("test.txt").AbsoluteFilePath;
+
+            Assert.Equal(@"C:\temp\test.txt", result);
+        }
     }
 }
