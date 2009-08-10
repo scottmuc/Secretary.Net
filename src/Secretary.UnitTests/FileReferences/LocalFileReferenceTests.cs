@@ -47,9 +47,4 @@ namespace Secretary.UnitTests.FileReferences
             Assert.Equal(@"C:\test\1\test.txt", result);
         }
     }
-
-    public class TestEntity
-    {
-        public int Id { get; set; }
-    }
 }
