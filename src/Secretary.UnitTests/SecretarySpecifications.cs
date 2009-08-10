@@ -12,14 +12,14 @@ namespace Secretary.UnitTests
             // Setup school with a specialization
             var school = new School("Test Entity U", @"C:\temp\TestEntities");
 
-            school.AddSpecialization<TestEntity>(e => e.Id.ToString());
+            school.Specializations.Add<TestEntity>(e => e.Id.ToString());
 
             // Enroll student in school for specialization
             var student = new Secretary();
             school.Enroll(student).SpecializingIn<TestEntity>(FileType.File);
             
             // Get a graduated Secretary
-            var secretary = school.GetGraduates().First();
+            var secretary = school.GraduateAllEnrolled().First();
 
             Assert.Equal("Test Entity U", secretary.AlmaMater);
 

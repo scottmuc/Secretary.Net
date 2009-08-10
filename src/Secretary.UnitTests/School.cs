@@ -8,35 +8,36 @@ namespace Secretary.UnitTests
         private readonly string name;
         private readonly string folderToTeach;
 
-        private readonly IDictionary<SpecializationKey, object> specializations;
+        private readonly SpecializationCollection specializations;
         private readonly IList<Enrollment> enrollments;
 
         public School(string name, string folderToTeach)
-            : this(name, folderToTeach, new List<Enrollment>(), new Dictionary<SpecializationKey, object>() )
+            : this(name, folderToTeach, new List<Enrollment>(), new SpecializationCollection())
         {
 
         }
 
-        public School(string name, string folderToTeach, IList<Enrollment> enrollments, IDictionary<SpecializationKey, object> specializations)
+        public School(string name, string folderToTeach, IList<Enrollment> enrollments, SpecializationCollection specializations)
         {
             this.name = name;
             this.folderToTeach = folderToTeach;
             this.enrollments = enrollments;
             this.specializations = specializations;
-            this.DefaultFileType = FileType.File;
         }
 
         public string Name { get { return name; } }
         public string Folder { get { return folderToTeach; } }
 
-        public FileType DefaultFileType { get; set; }
+        public SpecializationCollection Specializations
+        {
+            get { return specializations; }
+        }
 
         public Enrollment Enroll(Secretary student)
         {
             var enrollment = new Enrollment
             { 
                 Secretary = student,
-                FileType = DefaultFileType
             };
                             
             enrollments.Add(enrollment);
@@ -44,18 +45,9 @@ namespace Secretary.UnitTests
             return enrollment;
         }
 
-        public void AddSpecialization<TENTITY>(Func<TENTITY, string> pathDelegate)
-        {
-            this.AddSpecialization(DefaultFileType, pathDelegate);
-        }
 
-        public void AddSpecialization<TENTITY>(FileType fileType, Func<TENTITY, string> pathDelegate)
-        {
-            var key = new SpecializationKey(typeof(TENTITY), fileType);
-            specializations.Add(key, pathDelegate);
-        }
 
-        public IEnumerable<Secretary> GetGraduates()
+        public IEnumerable<Secretary> GraduateAllEnrolled()
         {
             foreach(var enrollment in enrollments)
             {
