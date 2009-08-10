@@ -1,0 +1,2 @@
+xunit 1.5 beta
+xunit contrib 0.3.1
