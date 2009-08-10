@@ -1,4 +1,5 @@
 using System.IO;
+using Secretary.Secretaries;
 using Xunit;
 
 namespace Secretary.IntegrationTests
