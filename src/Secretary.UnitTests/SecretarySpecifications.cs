@@ -16,19 +16,16 @@ namespace Secretary.UnitTests
 
             // Enroll student in school for specialization
             var student = new Secretary();
-            school.Enroll(student).SpecializingIn<TestEntity>(FileType.File);
+            school.Enroll(student).SpecializingIn<TestEntity>();
             
             // Get a graduated Secretary
             var secretary = school.GraduateAllEnrolled().First();
 
             Assert.Equal("Test Entity U", secretary.AlmaMater);
 
-            var specializedSecretary = secretary as SpecializedSecretary;
+            var specializedSecretary = secretary as SpecializedSecretary<TestEntity>;
 
             Assert.NotNull(specializedSecretary);
-
-            Assert.Equal(typeof(TestEntity), specializedSecretary.Specialization);
-
         }
 
     }

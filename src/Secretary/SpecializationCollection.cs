@@ -24,9 +24,9 @@ namespace Secretary
             this.Add(DefaultFileType, pathDelegate);
         }
 
-        public void Add<TENTITY>(FileType fileType, Func<TENTITY, string> pathDelegate)
+        public void Add<TEntity>(FileType fileType, Func<TEntity, string> pathDelegate)
         {
-            var key = new SpecializationKey(typeof(TENTITY), fileType);
+            var key = new SpecializationKey(typeof(TEntity), fileType);
             specializations.Add(key, pathDelegate);
         }
     }

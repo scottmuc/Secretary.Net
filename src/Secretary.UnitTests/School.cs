@@ -12,7 +12,7 @@ namespace Secretary.UnitTests
         private readonly IList<Enrollment> enrollments;
 
         public School(string name, string folderToTeach)
-            : this(name, folderToTeach, new List<Enrollment>(), new SpecializationCollection())
+            : this(name, folderToTeach, new List<Enrollment>(), new SpecializationCollection { DefaultFileType = FileType.File })
         {
 
         }
@@ -51,24 +51,11 @@ namespace Secretary.UnitTests
         {
             foreach(var enrollment in enrollments)
             {
-                if (enrollment.Type != null)
-                {
-                    var student = new SpecializedSecretary
-                    {
-                        AlmaMater = this.Name,
-                        RootFolder = this.folderToTeach,
-                        Specialization = enrollment.Type
-                    };
-                    yield return student;
-                }
-                else
-                {
                     var student = enrollment.Secretary;
                     student.AlmaMater = this.Name;
                     student.RootFolder = this.folderToTeach;
                     student.FileTypeHandled = enrollment.FileType;
-                    yield return student;
-                }
+                    yield return student;                
             }
         }
     }
