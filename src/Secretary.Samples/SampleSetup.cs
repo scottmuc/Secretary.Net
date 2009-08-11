@@ -29,8 +29,6 @@ namespace Secretary.Samples
             ceremony = new GraduationCeremony(imageSchool.Enrollments);
 
             grads.AddRange(ceremony.GetGraduates());
-
-
         }
     }
 }

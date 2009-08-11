@@ -27,20 +27,20 @@ namespace Secretary.UnitTests
         }
 
         [Fact]
-        public void FactMethodName()
+        public void Locate_WhenSpecializedForTestEntity_UsesOveriddenLocateMethod()
         {
-            var sut = new Secretary<TestEntity>
+            Secretary sut = new Secretary<TestEntity>
             {
                 RootFolder = @"C:\test",
                 FileTypeHandled = FileType.File,
-                EntityPathBuilder = e => e.Id.ToString(),
+                EntityPathBuilder = e => @"entities\" + e.Id.ToString(),
                 Entity = new TestEntity {Id = 1} 
             };
 
             var fileRef = sut.Locate("test.txt");
             var resultingPath = fileRef.AbsoluteFilePath;
 
-            Assert.Equal(@"C:\test\1\test.txt", resultingPath);           
+            Assert.Equal(@"C:\test\entities\1\test.txt", resultingPath);           
         }
     }
 }

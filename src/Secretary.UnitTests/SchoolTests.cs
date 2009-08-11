@@ -45,6 +45,5 @@ namespace Secretary.UnitTests
 
             Assert.True(sut.Specializations.Contains<TestEntity>());
         }
-
     }
 }

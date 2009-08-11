@@ -11,6 +11,12 @@ namespace Secretary
         private readonly SpecializationCollection specializations;
         private readonly IList<Enrollment> enrollments;
 
+        protected School()
+            : this(string.Empty, string.Empty)
+        {
+            
+        }
+
         public School(string name, string folderToTeach)
             : this(name, folderToTeach, new List<Enrollment>(), new SpecializationCollection { DefaultFileType = FileType.File })
         {

@@ -9,12 +9,6 @@ namespace Secretary
         public Type SpecializationType { get; private set; }
         public FileType FileType { get; private set; }
 
-        public SpecializationKey(Type entityType)
-            : this (entityType, FileType.File)
-        {
-            
-        }
-
         public SpecializationKey(Type entityType, FileType fileType)
         {           
             FileType = fileType;
