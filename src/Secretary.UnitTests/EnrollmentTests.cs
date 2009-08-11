@@ -18,9 +18,8 @@ namespace Secretary.UnitTests
         [Fact]
         public void SettingEnrollmentFor_WithAnEntity_ShouldChangeToSepcializedSecretary()
         {
-            var specializtionsStub = MockRepository.GenerateStub<SpecializationCollection>();
-            specializtionsStub.Add<TestEntity>(FileType.File, null);
-            var school = new School("Test", @"C:\Test", null, specializtionsStub);
+            var school = new School("Test", @"C:\Test");
+            school.Specializations.Add<TestEntity>(FileType.File, null);
 
             var sut = new Enrollment
             {

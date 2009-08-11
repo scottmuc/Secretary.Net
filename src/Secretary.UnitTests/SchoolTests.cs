@@ -45,5 +45,13 @@ namespace Secretary.UnitTests
 
             Assert.True(sut.Specializations.Contains<TestEntity>());
         }
+
+        [Fact]
+        public void Enrollments_GivenCollection_ShouldReturnInternalCollection()
+        {
+            var sut = GetTestSchool();
+
+            Assert.Equal(enrollments, sut.Enrollments);
+        }
     }
 }
