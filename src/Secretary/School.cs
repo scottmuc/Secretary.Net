@@ -1,14 +1,20 @@
 using System.Collections.Generic;
 
-namespace Secretary.UnitTests
+namespace Secretary
 {
-    public class School : ISchool
+    public class School
     {
         private readonly string name;
         private readonly string folderToTeach;
 
         private readonly SpecializationCollection specializations;
         private readonly IList<Enrollment> enrollments;
+
+        protected School()
+            : this(string.Empty, string.Empty)
+        {
+            
+        }
 
         public School(string name, string folderToTeach)
             : this(name, folderToTeach, new List<Enrollment>(), new SpecializationCollection { DefaultFileType = FileType.File })
@@ -32,28 +38,16 @@ namespace Secretary.UnitTests
             get { return specializations; }
         }
 
-        public Enrollment Enroll(Secretary student)
+        public IEnrollment Enroll(Secretary student)
         {
             var enrollment = new Enrollment
-            { 
-                Secretary = student,
-            };
+                                 { 
+                                     Secretary = student,
+                                 };
                             
             enrollments.Add(enrollment);
      
             return enrollment;
-        }
-
-        public IEnumerable<Secretary> GraduateAllEnrolled()
-        {
-            foreach(var enrollment in enrollments)
-            {
-                    var student = enrollment.Secretary;
-                    student.AlmaMater = this.Name;
-                    student.RootFolder = this.folderToTeach;
-                    student.FileTypeHandled = enrollment.FileType;
-                    yield return student;                
-            }
         }
     }
 }

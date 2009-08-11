@@ -1,19 +1,24 @@
+using System;
+
 namespace Secretary
 {
-    public class Enrollment
+    public class Enrollment : IEnrollment 
     {
         public Secretary Secretary { get; set; }
         public FileType FileType { get; set; }
+        public Type ForType { get; set; }
 
-        public void SpecializingIn<TENTITY>()
+        public IEnrolledFor SpecializingIn(FileType fileType)
         {
-            SpecializingIn<TENTITY>(FileType);
+            FileType = fileType;
+            return this;
         }
 
-        public void SpecializingIn<TENTITY>(FileType fileType)
+        public void For<TEntity>()
         {
-            Secretary = new SpecializedSecretary<TENTITY>();
-            FileType = fileType;
+            ForType = typeof(TEntity);
         }
     }
+
+
 }
