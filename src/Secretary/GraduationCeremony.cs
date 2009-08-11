@@ -18,6 +18,8 @@ namespace Secretary
             foreach(var enrollment in enrollments)
             {
                 var secretary = enrollment.Secretary;
+                secretary.AlmaMater = enrollment.School.Name;
+                secretary.RootFolder = enrollment.School.Folder;
                 graduates.Add(secretary);
             }
 

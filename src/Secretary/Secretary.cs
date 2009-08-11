@@ -9,6 +9,7 @@ namespace Secretary
         public string RootFolder { get; set; }
         public FileType FileTypeHandled { get; set; }
 
+
         public virtual IFile Locate(string fileName)
         {
             var fullPathToFile = Path.Combine(RootFolder, fileName);
@@ -20,7 +21,6 @@ namespace Secretary
     public class Secretary<TEntity> : Secretary
     {
         public TEntity Entity { get; set; }
-
         public Func<TEntity, string> EntityPathBuilder { get; set; }
 
         public override IFile Locate(string fileName)

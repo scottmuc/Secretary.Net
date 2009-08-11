@@ -17,6 +17,7 @@ namespace Secretary
         private SpecializationCollection(IDictionary<SpecializationKey, object> specializations)
         {
             this.specializations = specializations;
+            DefaultFileType = FileType.File;
         }
 
         public void Add<TENTITY>(Func<TENTITY, string> pathDelegate)
@@ -39,6 +40,25 @@ namespace Secretary
         {
             var key = new SpecializationKey(typeof(TEntity), fileType);
             return specializations.ContainsKey(key);
+        }
+
+        public Func<TEntity, string> Get<TEntity>(FileType fileType)
+        {
+            var key = new SpecializationKey(typeof(TEntity), fileType);
+
+            if (!Contains<TEntity>(fileType))
+                throw new SpecializationNotFoundException(key);
+
+            return (Func<TEntity, string>) specializations[key];
+        }
+    }
+
+    public class SpecializationNotFoundException : Exception
+    {
+        public SpecializationNotFoundException(SpecializationKey key)
+            : base(string.Format("Could not find specialization for {0}:{1}", key.SpecializationType, key.FileType))
+        {
+            
         }
     }
 }

@@ -5,20 +5,30 @@ namespace Secretary.UnitTests
 {
     public class GraduationCeremonyTests
     {
-
-        [Fact]
-        public void Graduates_GivenEnrollments_ShouldKnowWhatToDo()
+        private Secretary GetGraduate(Enrollment enrollment)
         {
-            var enrollments = new List<Enrollment>
-            {
-                new Enrollment { FileType = FileType.File, Secretary = new Secretary() }
-            };
-
+            var enrollments = new List<Enrollment> { enrollment };
 
             var ceremony = new GraduationCeremony(enrollments);
             var grads = ceremony.GetGraduates();
 
-            Assert.Equal(1, grads.Count);
+            return grads[0];
+        }
+
+
+        [Fact]
+        public void Graduates_GivenEnrollments_ShouldKnowWhatToDo()
+        {
+            var enrollment = new Enrollment
+            {
+                FileType = FileType.File,
+                School = new School("TestSchool", @"C:\temp"),
+                Secretary = new Secretary()
+            };
+
+            var grad = GetGraduate(enrollment);
+
+            Assert.Equal("TestSchool", grad.AlmaMater);
 
         }
     }
