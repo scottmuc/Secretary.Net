@@ -3,6 +3,11 @@ using System.IO;
 
 namespace Secretary
 {
+    /// <summary>
+    /// I purposely put very little logic in the Secretary class. This class is
+    /// responsible for holding instructions from it's training and acting upon
+    /// those instructions when asked.
+    /// </summary>
     public class Secretary
     {
         public string AlmaMater { get; set; }

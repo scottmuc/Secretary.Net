@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Secretary
@@ -30,6 +31,11 @@ namespace Secretary
         public SpecializationCollection Specializations
         {
             get { return specializations; }
+        }
+
+        public IList<Enrollment> Enrollments
+        {
+            get { return enrollments; }
         }
 
         public IEnrollment Enroll(Secretary student)

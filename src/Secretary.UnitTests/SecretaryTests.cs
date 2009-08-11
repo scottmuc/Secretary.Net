@@ -14,7 +14,7 @@ namespace Secretary.UnitTests
         [Fact]
         public void Locate_GivenRequirements_ShouldProvideAnAccurateFileReference()
         {
-            var sut = new Secretary()
+            var sut = new Secretary
             {
                 RootFolder = @"C:\test",
                 FileTypeHandled = FileType.File

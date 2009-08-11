@@ -6,6 +6,7 @@ namespace Secretary
     {
         public static FileType File = new FileType();
         public static FileType Image = new FileType();
+        public static FileType Audio = new FileType();
 
         public FileType()
             : this(path => new LocalFileReference(path))
@@ -19,5 +20,6 @@ namespace Secretary
         }
 
         public Func<string, IFile> CreateInstance;
+
     }
 }
