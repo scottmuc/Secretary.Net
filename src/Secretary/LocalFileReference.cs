@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace Secretary.FileReferences
+namespace Secretary
 {
     /// <summary>
     /// Concrete File class for a local filesystem reference

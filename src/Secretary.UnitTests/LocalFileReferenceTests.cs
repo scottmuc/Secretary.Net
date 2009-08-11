@@ -1,8 +1,6 @@
-using System;
-using Secretary.FileReferences;
 using Xunit;
 
-namespace Secretary.UnitTests.FileReferences
+namespace Secretary.UnitTests
 {
     public class LocalFileReferenceTests
     {
@@ -34,17 +32,6 @@ namespace Secretary.UnitTests.FileReferences
             var result = file.FileName;
 
             Assert.Equal(@"test.txt", result);
-        }
-
-        [Fact]
-        public void AbsoluteFilePath_ForAnEntity_ShouldReturnThatPathWithEntityStrategyInTheMiddle()
-        {
-            FileExtensions.pathBuildingStrategies.Add(typeof (TestEntity), new Func<TestEntity, string>(e => e.Id.ToString()));
-
-            var testEntity = new TestEntity {Id = 1};
-            var result = new LocalFileReference(@"C:\test\test.txt").For(testEntity).AbsoluteFilePath;
-
-            Assert.Equal(@"C:\test\1\test.txt", result);
         }
     }
 }

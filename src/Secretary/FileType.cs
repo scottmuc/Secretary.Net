@@ -1,12 +1,23 @@
 using System;
-using Secretary.FileReferences;
 
 namespace Secretary
 {
     public class FileType
     {
         public static FileType File = new FileType();
+        public static FileType Image = new FileType();
 
-        public Func<string, IFile> CreateInstance = (path) => new LocalFileReference(path);
+        public FileType()
+            : this(path => new LocalFileReference(path))
+        {
+            
+        }
+
+        public FileType(Func<string, IFile> factoryMethod)
+        {
+            CreateInstance = factoryMethod;
+        }
+
+        public Func<string, IFile> CreateInstance;
     }
 }

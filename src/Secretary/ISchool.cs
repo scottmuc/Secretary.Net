@@ -1,7 +1,7 @@
 namespace Secretary
 {
-    public interface ISchool
+    public interface ISchool : IFluentInterface
     {
-        ISecretary GetTrainedSecretary();
+       
     }
 }

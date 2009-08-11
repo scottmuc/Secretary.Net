@@ -1,4 +1,4 @@
-namespace Secretary.UnitTests
+namespace Secretary
 {
     public class Secretary
     {

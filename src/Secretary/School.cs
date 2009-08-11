@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 
 namespace Secretary.UnitTests
 {
-    public class School
+    public class School : ISchool
     {
         private readonly string name;
         private readonly string folderToTeach;
@@ -44,8 +43,6 @@ namespace Secretary.UnitTests
      
             return enrollment;
         }
-
-
 
         public IEnumerable<Secretary> GraduateAllEnrolled()
         {

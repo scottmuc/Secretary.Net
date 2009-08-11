@@ -1,13 +1,13 @@
-namespace Secretary.UnitTests
+namespace Secretary
 {
     public class Enrollment
     {
-        public Secretary Secretary;
-        public FileType FileType;
+        public Secretary Secretary { get; set; }
+        public FileType FileType { get; set; }
 
         public void SpecializingIn<TENTITY>()
         {
-            this.SpecializingIn<TENTITY>(FileType);
+            SpecializingIn<TENTITY>(FileType);
         }
 
         public void SpecializingIn<TENTITY>(FileType fileType)

@@ -21,7 +21,7 @@ namespace Secretary
 
         public void Add<TENTITY>(Func<TENTITY, string> pathDelegate)
         {
-            this.Add(DefaultFileType, pathDelegate);
+            Add(DefaultFileType, pathDelegate);
         }
 
         public void Add<TEntity>(FileType fileType, Func<TEntity, string> pathDelegate)
