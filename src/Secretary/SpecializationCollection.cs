@@ -29,5 +29,16 @@ namespace Secretary
             var key = new SpecializationKey(typeof(TEntity), fileType);
             specializations.Add(key, pathDelegate);
         }
+
+        public bool Contains<TEntity>()
+        {
+            return Contains<TEntity>(DefaultFileType);
+        }
+
+        public bool Contains<TEntity>(FileType fileType)
+        {
+            var key = new SpecializationKey(typeof(TEntity), fileType);
+            return specializations.ContainsKey(key);
+        }
     }
 }

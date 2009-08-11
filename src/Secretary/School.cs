@@ -41,9 +41,9 @@ namespace Secretary
         public IEnrollment Enroll(Secretary student)
         {
             var enrollment = new Enrollment
-                                 { 
-                                     Secretary = student,
-                                 };
+            {
+                Secretary = student,
+            };
                             
             enrollments.Add(enrollment);
      
