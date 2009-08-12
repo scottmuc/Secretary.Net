@@ -14,7 +14,6 @@ namespace Secretary
         public string RootFolder { get; set; }
         public FileType FileTypeHandled { get; set; }
 
-
         public virtual IFile Locate(string fileName)
         {
             var fullPathToFile = Path.Combine(RootFolder, fileName);

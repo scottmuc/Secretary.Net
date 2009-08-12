@@ -22,7 +22,7 @@ namespace Secretary.UnitTests
             var enrollment = new Enrollment
             {
                 FileType = FileType.File,
-                School = new School("TestSchool", @"C:\temp"),
+                School = new School("TestSchool", @"C:\temp"),                
                 Secretary = new Secretary()
             };
 

@@ -33,6 +33,7 @@ namespace Secretary.UnitTests
             var secretary = sut.Secretary as Secretary<TestEntity>;
 
             Assert.NotNull(secretary);
+            Assert.Equal(FileType.File, sut.FileType);
         }
     }
 }
