@@ -52,7 +52,6 @@ namespace Secretary.Samples
             var test3 = FileLocator.Find(FileType.Audio).Named("Test.mp3").For(testArtist);
 
             Assert.Equal(@"C:\test\music\1\Test.mp3", test3);
-
         }
     }
 }

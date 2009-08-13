@@ -11,7 +11,7 @@ namespace Secretary
         private readonly IList<Enrollment> enrollments;
 
         public School(string name, string folderToTeach)
-            : this(name, folderToTeach, new List<Enrollment>(), new SpecializationCollection { DefaultFileType = FileType.File })
+            : this(name, folderToTeach, new List<Enrollment>(), new SpecializationCollection())
         {
 
         }

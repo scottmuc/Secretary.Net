@@ -4,9 +4,8 @@ using System.ComponentModel;
 namespace Secretary
 {
     /// <summary>
-    /// Helper interface used to hide the base <see cref="Object"/> 
-    /// members from the fluent API to make for much cleaner 
-    /// Visual Studio intellisense experience.
+    /// Based on the fluent interface API design by Daniel Cazzulino
+    /// http://www.clariusconsulting.net/blogs/kzu/archive/2008/03/10/58301.aspx
     /// </summary>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public interface IFluentInterface

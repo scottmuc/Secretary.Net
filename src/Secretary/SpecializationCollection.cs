@@ -17,7 +17,7 @@ namespace Secretary
         private SpecializationCollection(IDictionary<SpecializationKey, object> specializations)
         {
             this.specializations = specializations;
-            DefaultFileType = FileType.File;
+            DefaultFileType = FileType.Default;
         }
 
         public void Add<TENTITY>(Func<TENTITY, string> pathDelegate)
