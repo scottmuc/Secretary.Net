@@ -7,7 +7,7 @@ namespace Secretary
         public Secretary Secretary { get; set; }
         public School School { get; set; }
         public FileType FileType { get; set; }
-        public Type ForType { get; set; }
+        public Type ForType { get; set; }        
 
         public IEnrolledFor SpecializingIn(FileType fileType)
         {

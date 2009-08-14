@@ -11,6 +11,11 @@ namespace Secretary
             Secretaries = trainedSecretaries;
         }
 
+        public static ILocationQuery Find()
+        {
+            return Find(FileType.Default);
+        }
+
         public static ILocationQuery Find(FileType fileType)
         {
             return new LocationQuery

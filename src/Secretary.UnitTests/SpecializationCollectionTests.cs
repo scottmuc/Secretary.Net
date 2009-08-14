@@ -13,5 +13,15 @@ namespace Secretary.UnitTests
                 () => sut.Get<TestEntity>(FileType.File)
             );
         }
+
+        [Fact]
+        public void Contains_WhenSpecializationIsAdded_ShouldBeTrue()
+        {
+            var sut = new SpecializationCollection();
+
+            sut.Add<TestEntity>(null);
+
+            Assert.True(sut.Contains<TestEntity>());
+        }
     }
 }

@@ -18,7 +18,15 @@ namespace Secretary
         {
             var fullPathToFile = Path.Combine(RootFolder, fileName);
 
-            return FileTypeHandled.CreateInstance(fullPathToFile);
+            return CreateFileReference(fullPathToFile);
+        }
+
+        protected IFile CreateFileReference(string absoluteFilePath)
+        {
+            if (FileTypeHandled == null)
+                throw new NullReferenceException("Secretary.FileTypeHandled is null");
+
+            return FileTypeHandled.CreateInstance(absoluteFilePath);
         }
     }
 
@@ -33,7 +41,7 @@ namespace Secretary
             var basePath = Path.Combine(RootFolder, entityPath);
             var fullPathToFile = Path.Combine(basePath, fileName);
 
-            return FileTypeHandled.CreateInstance(fullPathToFile);
+            return CreateFileReference(fullPathToFile);
         }
     }
 }

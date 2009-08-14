@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Secretary.Samples.Domain;
 using Xunit;
@@ -7,21 +6,20 @@ namespace Secretary.Samples
 {
     public class SampleSetup
     {
-        [Fact]
-        public void Setup()
+        private void Sample_ApplicationStartup()
         {
-            Console.WriteLine("Test");
-
             var musicSchool = new School("MusicSchool", @"C:\test\music");
-            
+
             musicSchool.Specializations.Add<Artist>(FileType.Audio, a => a.Id.ToString());
-            
+            musicSchool.Specializations.Add<Artist>(a => @"temp\" + a.Id.ToString());
+
             var imageSchool = new School("ImageSchool", @"C:\test\images");
 
             imageSchool.Specializations.Add<Artist>(FileType.Image, a => a.Id.ToString());
             imageSchool.Specializations.Add<User>(FileType.Image, u => u.Id.ToString());
 
             musicSchool.Enroll(new Secretary()).SpecializingIn(FileType.Audio).For<Artist>();
+            musicSchool.Enroll(new Secretary()).For<Artist>();
 
             imageSchool.Enroll(new Secretary()).SpecializingIn(FileType.Image).For<Artist>();
             imageSchool.Enroll(new Secretary()).SpecializingIn(FileType.Image).For<User>();
@@ -36,6 +34,13 @@ namespace Secretary.Samples
             grads.AddRange(ceremony.GetGraduates());
 
             FileLocator.InitializeWith(grads);
+        }
+
+
+        [Fact]
+        public void Setup()
+        {
+            Sample_ApplicationStartup();
 
             var testArtist = new Artist() {Id = 1};
             var testUser = new User() {Id = 1};
@@ -52,6 +57,10 @@ namespace Secretary.Samples
             var test3 = FileLocator.Find(FileType.Audio).Named("Test.mp3").For(testArtist);
 
             Assert.Equal(@"C:\test\music\1\Test.mp3", test3);
+
+            var test4 = FileLocator.Find().Named("Test.mp3").For(testArtist);
+
+            Assert.Equal(@"C:\test\music\temp\1\Test.mp3", test4);
         }
     }
 }

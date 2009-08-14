@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Secretary.UnitTests
@@ -8,7 +9,7 @@ namespace Secretary.UnitTests
         private const string testSchoolName = "TestSchool";
         private const string testSchoolPath = @"C:\temp\TestSchool";
         private readonly IList<Enrollment> enrollments = new List<Enrollment>();
-        private readonly SpecializationCollection specializations = new SpecializationCollection { DefaultFileType = FileType.File };
+        private readonly SpecializationCollection specializations = new SpecializationCollection();
 
         private School GetTestSchool()
         {
@@ -16,7 +17,7 @@ namespace Secretary.UnitTests
         }
 
         [Fact]
-        public void School_is_instantiated_with_name_and_root_Folder()
+        public void FolderAndName_GivenInConstructor_ShouldBeSame()
         {
             var sut = GetTestSchool();
 
@@ -25,25 +26,16 @@ namespace Secretary.UnitTests
         }
 
         [Fact]
-        public void Enrollments_should_contain_enrolled_student()
+        public void WhenStudentEnollsInSchool_StaysInEnrollmentsCollection()
         {
             var student = new Secretary();
 
             var sut = GetTestSchool();
 
             sut.Enroll(student);
+            var studentIsEnrolled = enrollments.Any(e => e.Secretary == student);
 
-            Assert.Equal(1, enrollments.Count);
-        }
-
-        [Fact]
-        public void Specializations_should_contain_added_specialty()
-        {
-            var sut = GetTestSchool();
-
-            sut.Specializations.Add<TestEntity>(e => e.Id.ToString());
-
-            Assert.True(sut.Specializations.Contains<TestEntity>());
+            Assert.True(studentIsEnrolled);
         }
 
         [Fact]

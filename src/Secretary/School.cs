@@ -41,6 +41,7 @@ namespace Secretary
         {
             var enrollment = new Enrollment
             {
+                FileType = FileType.Default,
                 Secretary = student,
                 School = this
             };

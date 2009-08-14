@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace Secretary.UnitTests
@@ -41,6 +42,17 @@ namespace Secretary.UnitTests
             var resultingPath = fileRef.AbsoluteFilePath;
 
             Assert.Equal(@"C:\test\entities\1\test.txt", resultingPath);           
+        }
+
+        [Fact]
+        public void Locate_WhenFileTypeHandledIsNull_ShouldThrowNullReferenceException()
+        {
+            var sut = new Secretary
+            {
+                RootFolder = @"C:\test",
+            };
+
+            Assert.Throws<NullReferenceException>(() => sut.Locate("test.txt"));
         }
     }
 }

@@ -3,21 +3,24 @@ using System.Collections.Generic;
 
 namespace Secretary
 {
+    /// <summary>
+    /// Used to store a collection of path construction delegates keyed to an Entity and a FileType
+    /// </summary>
     public class SpecializationCollection
     {
         private readonly IDictionary<SpecializationKey, object> specializations;
-        public FileType DefaultFileType { get; set; }
+        private FileType DefaultFileType { get; set; }
 
         public SpecializationCollection()
-            : this(new Dictionary<SpecializationKey, object>())
+            : this(new Dictionary<SpecializationKey, object>(), FileType.Default)
         {
             
         }
 
-        private SpecializationCollection(IDictionary<SpecializationKey, object> specializations)
+        protected SpecializationCollection(IDictionary<SpecializationKey, object> specializations, FileType defaultFileType)
         {
             this.specializations = specializations;
-            DefaultFileType = FileType.Default;
+            this.DefaultFileType = defaultFileType;
         }
 
         public void Add<TENTITY>(Func<TENTITY, string> pathDelegate)
