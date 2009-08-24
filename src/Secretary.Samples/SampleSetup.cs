@@ -35,23 +35,27 @@ namespace Secretary.Samples
 
             grads.AddRange(ceremony.GetGraduates());
 
-            FileLocator.InitializeWith(grads);
+            Locate.InitializeWith(grads);
 
             var testArtist = new Artist() {Id = 1};
             var testUser = new User() {Id = 1};
 
-            var test1 = FileLocator.Find(FileType.Image).Named("Test.jpg").For(testArtist);
+            var test1 = Locate.FileOfType(FileType.Image).Named("Test.jpg").For(testArtist);
 
             Assert.Equal(@"C:\test\images\1\Test.jpg", test1);
 
-            var test2 = FileLocator.Find(FileType.Image).Named("Test.jpg").For(testUser);
+            var test2 = Locate.FileOfType(FileType.Image).Named("Test.jpg").For(testUser);
 
             // notice how this is the same as the artist image
             Assert.Equal(@"C:\test\images\1\Test.jpg", test2);
 
-            var test3 = FileLocator.Find(FileType.Audio).Named("Test.mp3").For(testArtist);
+            var test3 = Locate.FileOfType(FileType.Audio).Named("Test.mp3").For(testArtist);
 
             Assert.Equal(@"C:\test\music\1\Test.mp3", test3);
+
+            var test4 = Locate.FolderForType(FileType.Audio).For(testArtist);
+
+            Assert.Equal(@"C:\test\music\1", test4);
         }
     }
 }

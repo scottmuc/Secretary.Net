@@ -4,12 +4,12 @@ using Xunit;
 
 namespace Secretary.UnitTests
 {
-    public class LocationQueryTests
+    public class FileLocationQueryTests
     {
         [Fact]
         public void For_GivenNoSpecializedSecretaries_ShouldThrowNullReferenceException()
         {
-            var sut = new LocationQuery {Secretaries = new List<Secretary>()};
+            var sut = new FileLocationQuery(FileType.File) {Secretaries = new List<Secretary>()};
 
             Assert.Throws<NullReferenceException>(
                 () => sut.For(new TestEntity() { Id = 1 })    

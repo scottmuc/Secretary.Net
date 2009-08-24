@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Secretary
 {
-    public class FileLocator
+    public class Locate
     {
         public static IList<Secretary> Secretaries { get; private set; }
 
@@ -11,14 +11,21 @@ namespace Secretary
             Secretaries = trainedSecretaries;
         }
 
-        public static ILocationQuery Find(FileType fileType)
+        public static IFileLocationQuery FileOfType(FileType fileType)
         {
-            return new LocationQuery
+            return new FileLocationQuery(fileType)
             {
-                FileType = fileType,
                 Secretaries = Secretaries
             };
         }
 
+        public static IFolderLocationQuery FolderForType(FileType fileType)
+        {
+            return new FolderLocationQuery(fileType)
+            {
+                Secretaries = Secretaries
+            };
+            
+        }
     }
 }
