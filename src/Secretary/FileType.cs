@@ -2,6 +2,9 @@ using System;
 
 namespace Secretary
 {
+    /// <summary>
+    /// Factories to create different concrete instances of a file
+    /// </summary>
     public class FileType
     {
         public static FileType File = new FileType("File");

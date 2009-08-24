@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 
 namespace Secretary
@@ -24,32 +23,6 @@ namespace Secretary
         public virtual IFolder GetFolder()
         {
             return new LocalFolderReference(RootFolder);
-        }
-    }
-
-    public class Secretary<TEntity> : Secretary
-    {
-        public TEntity Entity { get; set; }
-        public Func<TEntity, string> EntityPathBuilder { get; set; }
-
-        public override IFile Locate(string fileName)
-        {
-            var fullPathToFile = Path.Combine(GetBasePath(), fileName);
-
-            return FileTypeHandled.CreateInstance(fullPathToFile);
-        }
-
-        public override IFolder GetFolder()
-        {
-            return new LocalFolderReference(GetBasePath());
-        }
-
-        protected string GetBasePath()
-        {
-            var entityPath = EntityPathBuilder.Invoke(Entity);
-            var basePath = Path.Combine(RootFolder, entityPath);
-
-            return basePath;
         }
     }
 }
