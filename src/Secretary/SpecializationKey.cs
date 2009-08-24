@@ -19,12 +19,12 @@ namespace Secretary
 
         public bool Equals(SpecializationKey other)
         {
-            return SpecializationKey.Equals(this, other);
+            return Equals(this, other);
         }
 
         public override bool Equals(object other)
         {
-            return SpecializationKey.Equals(this, other as SpecializationKey);
+            return Equals(this, other as SpecializationKey);
         }
 
         public static bool Equals(SpecializationKey obj1, SpecializationKey obj2)
@@ -40,6 +40,5 @@ namespace Secretary
         {
             return hash;
         }
-
     }
 }

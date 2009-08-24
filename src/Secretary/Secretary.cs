@@ -20,6 +20,11 @@ namespace Secretary
 
             return FileTypeHandled.CreateInstance(fullPathToFile);
         }
+
+        public virtual IFolder GetFolder()
+        {
+            return new LocalFolderReference(RootFolder);
+        }
     }
 
     public class Secretary<TEntity> : Secretary
@@ -29,11 +34,22 @@ namespace Secretary
 
         public override IFile Locate(string fileName)
         {
-            var entityPath = EntityPathBuilder.Invoke(Entity);
-            var basePath = Path.Combine(RootFolder, entityPath);
-            var fullPathToFile = Path.Combine(basePath, fileName);
+            var fullPathToFile = Path.Combine(GetBasePath(), fileName);
 
             return FileTypeHandled.CreateInstance(fullPathToFile);
+        }
+
+        public override IFolder GetFolder()
+        {
+            return new LocalFolderReference(GetBasePath());
+        }
+
+        protected string GetBasePath()
+        {
+            var entityPath = EntityPathBuilder.Invoke(Entity);
+            var basePath = Path.Combine(RootFolder, entityPath);
+
+            return basePath;
         }
     }
 }

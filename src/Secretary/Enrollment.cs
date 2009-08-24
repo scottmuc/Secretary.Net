@@ -15,6 +15,10 @@ namespace Secretary
             return this;
         }
 
+        /// <summary>
+        /// Transforms a basic secretary into a specialized secretary
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
         public void For<TEntity>()
         {
             Secretary = new Secretary<TEntity>

@@ -16,6 +16,8 @@ namespace Secretary
             return this;
         }
 
+
+
         public string For<TEntity>(TEntity entity)
         {
             var secretary = Secretaries.Where(s => (s as Secretary<TEntity>) != null)

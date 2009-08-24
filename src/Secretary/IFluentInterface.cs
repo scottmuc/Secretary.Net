@@ -26,5 +26,4 @@ namespace Secretary
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool Equals(object obj);
     }
-
 }
