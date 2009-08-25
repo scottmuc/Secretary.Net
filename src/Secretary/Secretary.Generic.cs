@@ -14,19 +14,19 @@ namespace Secretary
 
         public override IFile Locate(string fileName)
         {
-            var fullPathToFile = Path.Combine(GetBasePath(), fileName);
-
-            return FileTypeHandled.CreateInstance(fullPathToFile);
+            return LocationContext.CreateFileInstance(GetBasePath(), fileName);
         }
 
         public override IFolder GetFolder()
         {
-            return new LocalFolderReference(GetBasePath());
+            return LocationContext.CreateFolderInstance(GetBasePath());
         }
 
         protected string GetBasePath()
         {
             var entityPath = EntityPathBuilder.Invoke(Entity);
+
+            // TODO move this to LocationContext delegate
             var basePath = Path.Combine(RootFolder, entityPath);
 
             return basePath;

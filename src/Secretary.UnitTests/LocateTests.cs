@@ -6,13 +6,13 @@ namespace Secretary.UnitTests
     public class LocateTests
     {
         [Fact]
-        public void Secretaries_GivenACollectionOfSecretaries_ShouldReturnPassedInReference()
+        public void IsInitialized_GivenACollectionOfSecretaries_ShouldReturnTrue()
         {
-            var secretaries = new List<Secretary>();
+            Locate.InitializeWith(new List<Secretary>());
 
-            Locate.InitializeWith(secretaries);
+            var result = Locate.IsInitialized;
 
-            Assert.Same(secretaries, Locate.Secretaries);
+            Assert.True(result);
         }
     }
 }

@@ -51,8 +51,9 @@ namespace Secretary.UnitTests
             {
                 RootFolder = @"C:\test",
                 FileTypeHandled = FileType.File,
+                LocationContext = Location.Local,
                 EntityPathBuilder = e => @"entities\" + e.Id.ToString(),
-                Entity = new TestEntity {Id = 1} 
+                Entity = new TestEntity {Id = 1}
             };
 
             var fileRef = sut.Locate("test.txt");
@@ -68,6 +69,7 @@ namespace Secretary.UnitTests
             {
                 RootFolder = @"C:\test",
                 FileTypeHandled = FileType.File,
+                LocationContext = Location.Local,
                 EntityPathBuilder = e => @"entities\" + e.Id.ToString(),
                 Entity = new TestEntity { Id = 1 }
             };

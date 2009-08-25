@@ -13,18 +13,10 @@ namespace Secretary
         public static FileType Default = File;
 
         public FileType(string name)
-            : this(name, path => new LocalFileReference(path))
-        {
-            
-        }
-
-        public FileType(string name, Func<string, IFile> factoryMethod)
         {
             Name = name;
-            CreateInstance = factoryMethod;
         }
 
-        public Func<string, IFile> CreateInstance;
         public string Name { get; private set; }
 
         public override string ToString() 
