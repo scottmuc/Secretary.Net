@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 
 namespace Secretary
@@ -18,30 +17,12 @@ namespace Secretary
         {
             var fullPathToFile = Path.Combine(RootFolder, fileName);
 
-            return CreateFileReference(fullPathToFile);
+            return FileTypeHandled.CreateInstance(fullPathToFile);
         }
 
-        protected IFile CreateFileReference(string absoluteFilePath)
+        public virtual IFolder GetFolder()
         {
-            if (FileTypeHandled == null)
-                throw new NullReferenceException("Secretary.FileTypeHandled is null");
-
-            return FileTypeHandled.CreateInstance(absoluteFilePath);
-        }
-    }
-
-    public class Secretary<TEntity> : Secretary
-    {
-        public TEntity Entity { get; set; }
-        public Func<TEntity, string> EntityPathBuilder { get; set; }
-
-        public override IFile Locate(string fileName)
-        {
-            var entityPath = EntityPathBuilder.Invoke(Entity);
-            var basePath = Path.Combine(RootFolder, entityPath);
-            var fullPathToFile = Path.Combine(basePath, fileName);
-
-            return CreateFileReference(fullPathToFile);
+            return new LocalFolderReference(RootFolder);
         }
     }
 }

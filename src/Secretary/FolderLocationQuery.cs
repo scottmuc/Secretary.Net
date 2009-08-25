@@ -4,16 +4,14 @@ using System.Linq;
 
 namespace Secretary
 {
-    public class LocationQuery : ILocationQuery, INamed
+    public class FolderLocationQuery : IFolderLocationQuery
     {
-        public FileType FileType { get; set; }
-        public string FileName { get; set; }
-        public IList<Secretary> Secretaries { get; set;}
+        public FileType FileType { get; private set; }
+        public IList<Secretary> Secretaries { get; set; }
 
-        public INamed Named(string fileName)
+        public FolderLocationQuery(FileType fileType)
         {
-            FileName = fileName;
-            return this;
+            this.FileType = fileType;
         }
 
         public string For<TEntity>(TEntity entity)
@@ -24,11 +22,10 @@ namespace Secretary
             if (secretary == null)
                 throw new NullReferenceException("No secretary trained to handle that request");
 
-            var casted = (Secretary<TEntity>) secretary;
+            var casted = (Secretary<TEntity>)secretary;
             casted.Entity = entity;
 
-            return secretary.Locate(FileName).AbsoluteFilePath;
-
+            return secretary.GetFolder().AbsolutePath;
         }
     }
 }
