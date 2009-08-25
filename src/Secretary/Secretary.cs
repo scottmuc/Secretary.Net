@@ -1,5 +1,3 @@
-using System.IO;
-
 namespace Secretary
 {
     /// <summary>
@@ -16,14 +14,12 @@ namespace Secretary
 
         public virtual IFile Locate(string fileName)
         {
-            var fullPathToFile = Path.Combine(RootFolder, fileName);
-
-            return LocationContext.CreateInstance(fullPathToFile);
+            return LocationContext.CreateFileInstance(RootFolder, fileName);
         }
 
         public virtual IFolder GetFolder()
         {
-            return new LocalFolderReference(RootFolder);
+            return LocationContext.CreateFolderInstance(RootFolder);
         }
     }
 }
