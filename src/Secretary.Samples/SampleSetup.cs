@@ -8,21 +8,21 @@ namespace Secretary.Samples
     {
         private void Sample_ApplicationStartup()
         {
-            var musicSchool = new School("MusicSchool", @"C:\test\music");
+            var musicSchool = new LocalSchool("MusicSchool", @"C:\test\music");
 
             musicSchool.Specializations.Add<Artist>(FileType.Audio, a => a.Id.ToString());
             musicSchool.Specializations.Add<Artist>(a => @"temp\" + a.Id.ToString());
 
-            var imageSchool = new School("ImageSchool", @"C:\test\images");
+            var imageSchool = new LocalSchool("ImageSchool", @"C:\test\images");
 
             imageSchool.Specializations.Add<Artist>(FileType.Image, a => a.Id.ToString());
             imageSchool.Specializations.Add<User>(FileType.Image, u => u.Id.ToString());
 
-            musicSchool.Enroll(new Secretary()).SpecializingIn(FileType.Audio).For<Artist>();
-            musicSchool.Enroll(new Secretary()).For<Artist>();
+            musicSchool.Enroll().SpecializingIn(FileType.Audio).For<Artist>();
+            musicSchool.Enroll().For<Artist>();
 
-            imageSchool.Enroll(new Secretary()).SpecializingIn(FileType.Image).For<Artist>();
-            imageSchool.Enroll(new Secretary()).SpecializingIn(FileType.Image).For<User>();
+            imageSchool.Enroll().SpecializingIn(FileType.Image).For<Artist>();
+            imageSchool.Enroll().SpecializingIn(FileType.Image).For<User>();
 
             var ceremony = new GraduationCeremony(musicSchool.Enrollments);
             var grads = new List<Secretary>();

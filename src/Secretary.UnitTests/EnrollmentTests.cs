@@ -18,7 +18,7 @@ namespace Secretary.UnitTests
         [Fact]
         public void SettingEnrollmentFor_WithAnEntity_ShouldChangeToSepcializedSecretary()
         {
-            var school = new School("Test", @"C:\Test");
+            var school = new LocalSchool("Test", @"C:\Test");
             school.Specializations.Add<TestEntity>(FileType.File, null);
 
             var sut = new Enrollment
