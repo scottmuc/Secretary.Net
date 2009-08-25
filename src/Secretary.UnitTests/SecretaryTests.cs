@@ -18,7 +18,8 @@ namespace Secretary.UnitTests
             var sut = new Secretary
             {
                 RootFolder = @"C:\test",
-                FileTypeHandled = FileType.File
+                FileTypeHandled = FileType.File,
+                LocationContext = Location.Local
             };
 
             var fileRef = sut.Locate("test.txt");

@@ -18,7 +18,7 @@ namespace Secretary
         {
             var fullPathToFile = Path.Combine(RootFolder, fileName);
 
-            return FileTypeHandled.CreateInstance(fullPathToFile);
+            return LocationContext.CreateInstance(fullPathToFile);
         }
 
         public virtual IFolder GetFolder()

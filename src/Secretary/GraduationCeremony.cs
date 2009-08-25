@@ -20,6 +20,7 @@ namespace Secretary
                 var secretary = enrollment.Secretary;
                 secretary.AlmaMater = enrollment.School.Name;
                 secretary.RootFolder = enrollment.School.BaseFilePath;
+                secretary.LocationContext = enrollment.School.Location;
                 secretary.FileTypeHandled = enrollment.FileType;
                 graduates.Add(secretary);
             }

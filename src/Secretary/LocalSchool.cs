@@ -2,6 +2,9 @@ using System.IO;
 
 namespace Secretary
 {
+    /// <summary>
+    /// A school that trains secretaries for local file locating.
+    /// </summary>
     public class LocalSchool : School
     {
         private readonly DirectoryInfo baseDirectory;
