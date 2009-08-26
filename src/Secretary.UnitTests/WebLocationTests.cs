@@ -7,7 +7,7 @@ namespace Secretary.UnitTests
         [Fact]
         public void Combine_WithBackSlashesInPath_ShouldReplaceThemWithForwardSlashes()
         {
-            var sut = new WebLocation();
+            var sut = new HttpLocation();
 
             var result = sut.Combine("http://localhost/test", @"again\1");
 
