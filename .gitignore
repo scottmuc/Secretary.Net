@@ -25,3 +25,6 @@ httpd.parse.errors
  
 # Office Temp Files
 ~$* 
+
+# Vim Temp Buffers
+*~
