@@ -15,7 +15,9 @@ namespace Secretary
 
         public override string Combine(string firstPart, string secondPart)
         {
-            return firstPart.TrimEnd('/') + "/" + secondPart.TrimStart('/');
+            var normalizedFirstPart = firstPart.TrimEnd('/').Replace('\\', '/');
+            var normalizedSecondPart = secondPart.TrimStart('/').Replace('\\', '/');
+            return normalizedFirstPart + "/" + normalizedSecondPart;
         }        
     }
 }
