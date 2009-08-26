@@ -1,15 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Secretary
 {
-    public class FolderLocationQuery : IFolderLocationQuery
+    public class FolderLocationQuery : LocationQueryBase, IFolderLocationQuery
     {
-        public FileType FileType { get; private set; }
-        public Location LocationContext { get; private set; }
-        public IList<Secretary> Secretaries { get; set; }
-
         public FolderLocationQuery(FileType fileType)
         {
             this.FileType = fileType;
@@ -23,11 +17,7 @@ namespace Secretary
 
         public string For<TEntity>(TEntity entity)
         {
-            var secretary = Secretaries
-                    .Where(s => (s as Secretary<TEntity>) != null)
-                    .Where(s => s.FileTypeHandled == FileType)
-                    .Where(s => s.LocationContext == LocationContext)
-                .SingleOrDefault();
+            var secretary = GetSecretary<TEntity>();
 
             if (secretary == null)
                 throw new NullReferenceException("No secretary trained to handle that request");
