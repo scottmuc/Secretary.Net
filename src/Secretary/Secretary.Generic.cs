@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 
 namespace Secretary
 {
@@ -25,9 +24,7 @@ namespace Secretary
         protected string GetBasePath()
         {
             var entityPath = EntityPathBuilder.Invoke(Entity);
-
-            // TODO move this to LocationContext delegate
-            var basePath = Path.Combine(RootFolder, entityPath);
+            var basePath = LocationContext.Combine(RootFolder, entityPath);
 
             return basePath;
         }

@@ -22,14 +22,9 @@ namespace Secretary
     [EditorBrowsable(EditorBrowsableState.Never)]
     public interface IFileLocationQuery : IFluentInterface
     {
-        INamed Named(string fileName);
+
     }
 
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public interface INamed : IFluentInterface
-    {
-        string For<TEntity>(TEntity entity);
-    }
 
     [EditorBrowsable(EditorBrowsableState.Never)]
     public interface IFolderLocationQuery : IFluentInterface

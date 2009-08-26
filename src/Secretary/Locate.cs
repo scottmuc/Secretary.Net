@@ -37,13 +37,13 @@ namespace Secretary
         /// <summary>
         /// Entry API to file reference retrieval
         /// </summary>
-        /// <param name="fileType"></param>
+        /// <param name="fileName"></param>
         /// <returns></returns>
-        public static IFileLocationQuery FileOfType(FileType fileType)
+        public static FileLocationQuery File(string fileName)
         {
             GuardAgainstUninitializedUsage();
 
-            return new FileLocationQuery(fileType)
+            return new FileLocationQuery(fileName)
             {
                 Secretaries = Secretaries
             };
@@ -54,7 +54,7 @@ namespace Secretary
         /// </summary>
         /// <param name="fileType"></param>
         /// <returns></returns>
-        public static IFolderLocationQuery FolderForType(FileType fileType)
+        public static FolderLocationQuery FolderForType(FileType fileType)
         {
             GuardAgainstUninitializedUsage();
 

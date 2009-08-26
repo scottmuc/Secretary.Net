@@ -7,6 +7,7 @@ namespace Secretary
     public class FolderLocationQuery : IFolderLocationQuery
     {
         public FileType FileType { get; private set; }
+        public Location LocationContext { get; private set; }
         public IList<Secretary> Secretaries { get; set; }
 
         public FolderLocationQuery(FileType fileType)
@@ -14,10 +15,19 @@ namespace Secretary
             this.FileType = fileType;
         }
 
+        public FolderLocationQuery In(Location location)
+        {
+            this.LocationContext = location;
+            return this;
+        }
+
         public string For<TEntity>(TEntity entity)
         {
-            var secretary = Secretaries.Where(s => (s as Secretary<TEntity>) != null)
-                .Where(s => s.FileTypeHandled == FileType).SingleOrDefault();
+            var secretary = Secretaries
+                    .Where(s => (s as Secretary<TEntity>) != null)
+                    .Where(s => s.FileTypeHandled == FileType)
+                    .Where(s => s.LocationContext == LocationContext)
+                .SingleOrDefault();
 
             if (secretary == null)
                 throw new NullReferenceException("No secretary trained to handle that request");

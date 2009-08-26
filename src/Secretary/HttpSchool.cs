@@ -19,7 +19,7 @@ namespace Secretary
 
         public override string BaseFilePath
         {
-            get { return baseUri.AbsolutePath; }
+            get { return baseUri.AbsoluteUri; }
         }
 
         public override Location Location
