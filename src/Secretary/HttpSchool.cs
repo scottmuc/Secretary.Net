@@ -26,19 +26,5 @@ namespace Secretary
         {
             get { return Location.Web; }
         }
-
-        public override IEnrollment Enroll()
-        {
-            var enrollment = new Enrollment
-            {
-                FileType = FileType.Default,
-                Secretary = new Secretary(),
-                School = this
-            };
-
-            Enrollments.Add(enrollment);
-
-            return enrollment;
-        }
     }
 }

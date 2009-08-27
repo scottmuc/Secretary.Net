@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace Secretary
@@ -31,7 +30,7 @@ namespace Secretary
         private static void GuardAgainstUninitializedUsage()
         {
             if (!IsInitialized)
-                throw new Exception("Must initialize Locate Secretary collection!");           
+                throw new LocatorUnitializedException();           
         }
 
         /// <summary>

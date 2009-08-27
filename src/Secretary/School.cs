@@ -9,12 +9,18 @@ namespace Secretary
     public abstract class School
     {
         protected School(string name)
-            : this(name, new List<Enrollment>(), new SpecializationCollection())
+            : this(name, new SpecializationCollection(), new List<Enrollment>())
         {
 
         }
 
-        protected School(string name, IList<Enrollment> enrollments, SpecializationCollection specializations)
+        protected School(string name, SpecializationCollection specializations)
+            : this(name, specializations, new List<Enrollment>())
+        {
+
+        }
+
+        protected School(string name, SpecializationCollection specializations, IList<Enrollment> enrollments)
         {
             Name = name;
             Enrollments = enrollments;
@@ -49,9 +55,21 @@ namespace Secretary
         public abstract Location Location { get; }
 
         /// <summary>
-        /// Template Method to enforce all concrete schools to implement enrollment functionality.
+        /// Creates a secretary and enrolls them in the school
         /// </summary>
         /// <returns>An entry into the enrollment fluent API</returns>
-        public abstract IEnrollment Enroll();
+        public IEnrollment Enroll()
+        {
+            var enrollment = new Enrollment
+            {
+                FileType = FileType.Default,
+                Secretary = new Secretary(),
+                School = this
+            };
+
+            Enrollments.Add(enrollment);
+
+            return enrollment;
+        }
     }
 }

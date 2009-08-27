@@ -1,5 +1,3 @@
-using System;
-
 namespace Secretary
 {
     /// <summary>
@@ -7,10 +5,20 @@ namespace Secretary
     /// </summary>
     public class Enrollment : IEnrollment 
     {
+        /// <summary>
+        /// Secretary that is enrolled
+        /// </summary>        
         public Secretary Secretary { get; set; }
+
+        /// <summary>
+        /// School of enrollment
+        /// </summary>
         public School School { get; set; }
+
+        /// <summary>
+        /// FileType training specified
+        /// </summary>
         public FileType FileType { get; set; }
-        public Type ForType { get; set; }        
 
         public IEnrolledFor SpecializingIn(FileType fileType)
         {
@@ -27,9 +35,7 @@ namespace Secretary
             Secretary = new Secretary<TEntity>
             {
                 EntityPathBuilder = School.Specializations.Get<TEntity>(FileType)
-            };
-            
-            ForType = typeof(TEntity);
+            };            
         }
     }
 

@@ -14,5 +14,11 @@ namespace Secretary.UnitTests
 
             Assert.True(result);
         }
+
+        [Fact]
+        public void Usage_WhenUninitialized_ShouldThrowException()
+        {
+            Assert.Throws<LocatorUnitializedException>(() => Locate.FolderForType(FileType.Image));            
+        }
     }
 }

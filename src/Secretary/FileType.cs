@@ -1,9 +1,7 @@
-using System;
-
 namespace Secretary
 {
     /// <summary>
-    /// Factories to create different concrete instances of a file
+    /// Currently this is just a marker property to differentiate file location contexts
     /// </summary>
     public class FileType
     {
