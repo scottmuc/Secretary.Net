@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
 using Xunit;
 
 namespace Secretary.UnitTests
 {
-    public class LocateTests
+    public class LocateTests : IDisposable
     {
         [Fact]
         public void IsInitialized_GivenACollectionOfSecretaries_ShouldReturnTrue()
@@ -19,6 +20,12 @@ namespace Secretary.UnitTests
         public void Usage_WhenUninitialized_ShouldThrowException()
         {
             Assert.Throws<LocatorUnitializedException>(() => Locate.FolderForType(FileType.Image));            
+        }
+
+
+        public void Dispose()
+        {
+            Locate.Reset();
         }
     }
 }

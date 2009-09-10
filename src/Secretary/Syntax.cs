@@ -19,16 +19,32 @@ namespace Secretary
         IEnrolledFor SpecializingIn(FileType fileType);  
     }
 
+
+    /// <summary>
+    /// Beginning of a file location query
+    /// </summary>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public interface IFileLocationQuery : IFluentInterface
     {
+        IInLocation Of(FileType fileType);
+    }
 
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public interface IInLocation : IFluentInterface
+    {
+        IForEntity In(Location fileLocation);
+    }
+
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public interface IForEntity : IFluentInterface
+    {
+        string For<TEntity>(TEntity entity);
     }
 
 
     [EditorBrowsable(EditorBrowsableState.Never)]
     public interface IFolderLocationQuery : IFluentInterface
     {
-        string For<TEntity>(TEntity entity);
+        IForEntity In(Location fileLocation);
     }
 }

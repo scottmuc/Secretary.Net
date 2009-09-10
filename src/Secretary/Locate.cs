@@ -27,6 +27,11 @@ namespace Secretary
             get { return (Secretaries != null); }
         }
 
+        public static void Reset()
+        {
+            Secretaries = null;
+        }
+
         private static void GuardAgainstUninitializedUsage()
         {
             if (!IsInitialized)
@@ -38,7 +43,7 @@ namespace Secretary
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static FileLocationQuery File(string fileName)
+        public static IFileLocationQuery File(string fileName)
         {
             GuardAgainstUninitializedUsage();
 
@@ -53,7 +58,7 @@ namespace Secretary
         /// </summary>
         /// <param name="fileType"></param>
         /// <returns></returns>
-        public static FolderLocationQuery FolderForType(FileType fileType)
+        public static IFolderLocationQuery FolderForType(FileType fileType)
         {
             GuardAgainstUninitializedUsage();
 

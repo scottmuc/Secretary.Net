@@ -2,7 +2,7 @@ using System;
 
 namespace Secretary
 {
-    public class FileLocationQuery : LocationQueryBase, IFileLocationQuery
+    public class FileLocationQuery : LocationQueryBase, IFileLocationQuery, IInLocation, IForEntity
     {
         public string FileName { get; private set; }
 
@@ -11,13 +11,13 @@ namespace Secretary
             FileName = fileName;
         }
 
-        public FileLocationQuery Of(FileType fileType)
+        public IInLocation Of(FileType fileType)
         {
             FileType = fileType;
             return this;
         }
 
-        public FileLocationQuery In(Location location)
+        public IForEntity In(Location location)
         {
             LocationContext = location;
             return this;

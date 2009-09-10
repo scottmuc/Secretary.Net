@@ -2,14 +2,14 @@ using System;
 
 namespace Secretary
 {
-    public class FolderLocationQuery : LocationQueryBase, IFolderLocationQuery
+    public class FolderLocationQuery : LocationQueryBase, IFolderLocationQuery, IForEntity
     {
         public FolderLocationQuery(FileType fileType)
         {
             this.FileType = fileType;
         }
 
-        public FolderLocationQuery In(Location location)
+        public IForEntity In(Location location)
         {
             this.LocationContext = location;
             return this;
