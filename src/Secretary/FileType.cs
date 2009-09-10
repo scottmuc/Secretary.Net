@@ -8,6 +8,7 @@ namespace Secretary
         public static FileType File = new FileType("File");
         public static FileType Image = new FileType("Image");
         public static FileType Audio = new FileType("Audio");
+        public static FileType Video = new FileType("Video");
         public static FileType Default = File;
 
         public FileType(string name)
